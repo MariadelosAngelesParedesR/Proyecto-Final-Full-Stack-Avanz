@@ -1,0 +1,27 @@
+<%- include('partials/header'); -%>
+<h1 class="text-center">Noticias</h1>
+<p class="mb-3">
+	<a href="/nueva" class="btn btn-success">Nueva Noticia</a>
+</p>
+<% if (results.length>0) {%> 
+    <div class="row">
+    <% results.forEach (function (noticia) { %>
+       
+            <div class="col-4">
+                <div class="d-flex justify-content-between align-items-center"> 
+                    <h3> <%= noticia.titulo %></h3> <a href="/editar/<%= noticia.id %>" class="btn btn-warning"> Editar </a>
+                </div>
+           
+            <p> <%= noticia.descripcion %> </p>
+
+            <p><a href="/eliminar/<%= noticia.id %>" class="btn btn-danger">Eliminar</a></p>
+            </div>
+    
+
+    <% }) %>
+    </div>
+
+<% } else {%>
+    <p class="text-light fw-bold text-center">No hay noticias ingresadas</p>
+<% } %>
+<%- include('partials/footer'); -%>
